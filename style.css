@@ -1,11 +1,18 @@
 @font-face {
-    font-family: OpenSans;
-    src: url(OpenSans.ttf);
+    font-family: Gilroy-Regular;
+    src: url(fonts/Gilroy-Regular.ttf);
+}
+
+@font-face {
+    font-family: Gilroy-SemiBold;
+    src: url(fonts/Gilroy-SemiBold.ttf);
 }
 
 :root {
-    --clickup-bg: hsl(216, 11%, 10%);
+    --clickup-bg: #17191c;
     --clickup-text: #535966;
+    --text: #ffffff;
+    --exponential: cubic-bezier(.19,1,.22,1);
 }
 
 *:not(head) {
@@ -13,18 +20,20 @@
     justify-content: center;
     align-items: center;
 
-    font-family: OpenSans;
+    font-family: Gilroy-Regular;
     font-size: 1vw;
-    font-weight: 600;
+    font-weight: 800;
+
+    color: var(--text);
+    border-color: var(--text);
 
     box-sizing: border-box;
 
     transition-timing-function: var(--exponential);
     transition-property: all;
-    transition-duration: 0.2s;
+    transition-duration: 0.25s;
 
     scroll-behavior: smooth;
-    color: var(--clickup-text);
     margin: 0;
 }
 
@@ -38,9 +47,7 @@ body {
 }
 
 main {
-    position: static;
-    flex-direction: column;
-    gap: 1rem;
+    height: 100vh;
 }
 
 header {
@@ -70,10 +77,20 @@ header {
 
 .user-image {
     border-radius: 100%;
-    width: 10rem;
-    border: 0.4rem solid var(--clickup-text);
+    width: 11rem;
+    border: 0.5rem solid;
 }
 
 .user-name {
-    font-size: 4rem;
+    font-size: 4.5rem;
+    font-family: Gilroy-SemiBold;
+}
+
+.logo-box {
+    gap: 1rem;
+}
+
+#clickUpLogo {
+    margin-top: 0.1rem;
+    width: 12rem;
 }
