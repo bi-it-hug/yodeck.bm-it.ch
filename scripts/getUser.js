@@ -33,8 +33,6 @@ async function getData(url) {
 
 async function loadData(url) {
     if (apiKey) {
-        tvBox.classList.add('show')
-
         try {
             const data = await getData(url)
 
@@ -43,6 +41,7 @@ async function loadData(url) {
 
                 imgElement.src = assignee.profilePicture || 'default-profile.png'
                 usernameElement.textContent = assignee.username || 'Unknown User'
+                tvBox.classList.add('show')
 
             } else {
                 noData.classList.add('show')
