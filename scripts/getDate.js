@@ -27,7 +27,7 @@ const months = [
 ]
 
 dateElement.textContent = `
-    ${weekdays[now.getDay()]},
+    ${weekdays[now.getDay() - 1]},
     ${now.getDate()}.
     ${months[now.getMonth()]}
     ${now.getFullYear()}
