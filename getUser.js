@@ -1,7 +1,7 @@
 let data
 const imgElement = document.getElementById('userImage')
 const usernameElement = document.getElementById('username')
-const apiKey = 'pk_44151279_TNFEERET56V3E7MIP60853MMF6BTJUW6'
+const apiKey = new URLSearchParams(window.location.search).get('key')
 const taskId = '#8695efnv4'
 const url = `https://api.clickup.com/api/v2/view/19vq0-51092/task?=${taskId}`
 const fetchOptions = {
