@@ -1,15 +1,11 @@
-const tvBox = document.getElementById('tvBox')
-const noData = document.querySelector('.no-data')
-const imgElement = document.getElementById('userImage')
+const box = document.getElementById('box')
+const noData = document.getElementById('noData')
+const profilePictureElement = document.getElementById('profilePicture')
 const usernameElement = document.getElementById('username')
 
-// API-Key
 const apiKey = new URLSearchParams(window.location.search).get('key')
-
-// URL's
 const tvURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 
-// Options
 const fetchOptions = {
     method: 'GET',
     redirect: 'follow',
@@ -30,7 +26,6 @@ async function getData(url) {
     }
 }
 
-
 async function loadData(url) {
     if (apiKey) {
         try {
@@ -39,9 +34,9 @@ async function loadData(url) {
             if (data && data.tasks.length > 0 && data.tasks[0].assignees.length > 0) {
                 const assignee = data.tasks[0].assignees[0]
 
-                imgElement.src = assignee.profilePicture || 'default-profile.png'
+                profilePictureElement.src = assignee.profilePicture || 'default-profile.png'
                 usernameElement.textContent = assignee.username || 'Unknown User'
-                tvBox.classList.add('show')
+                box.classList.add('show')
 
             } else {
                 noData.classList.add('show')

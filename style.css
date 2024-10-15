@@ -1,18 +1,19 @@
 @font-face {
-    font-family: Gilroy-Regular;
+    font-family: Gilroy;
+    font-weight: 400;
     src: url(fonts/Gilroy-Regular.ttf);
 }
 
 @font-face {
-    font-family: Gilroy-SemiBold;
+    font-family: Gilroy;
+    font-weight: 600;
     src: url(fonts/Gilroy-SemiBold.ttf);
 }
 
 :root {
-    --clickup-bg: #17191c;
-    --clickup-text: #535966;
+    --transition-flow: cubic-bezier(.19,1,.22,1);
+    --background: #17191c;
     --text: #ffffff;
-    --exponential: cubic-bezier(.19,1,.22,1);
 }
 
 *:not(head) {
@@ -20,9 +21,8 @@
     justify-content: center;
     align-items: center;
 
-    font-family: Gilroy-Regular;
-    font-size: 1vw;
-    font-weight: normal;
+    font-family: Gilroy;
+    font-weight: 400;
     white-space: nowrap;
 
     color: var(--text);
@@ -30,7 +30,7 @@
 
     box-sizing: border-box;
 
-    transition-timing-function: var(--exponential);
+    transition-timing-function: var(--transition-flow);
     transition-property: all;
     transition-duration: 0.25s;
 
@@ -38,67 +38,66 @@
     margin: 0;
 }
 
+html {
+    font-size: 22px;
+}
+
 body {
-    position: static;
+    background: var(--background);
     flex-direction: column;
-    justify-content: space-between;
     font-size: 18px;
     width: 100vw;
     height: 100vh;
-    background: var(--clickup-bg);
 }
 
 main {
-    width: 100%;
-    height: 100vh;
+    width: inherit;
+    height: inherit;
 }
 
 header {
     display: grid;
     grid-template-columns: 1fr 1fr 10fr;
     justify-items: end;
-    width: 100%;
+    width: inherit;
+    height: fit-content;
     position: sticky;
     top: 0;
     left: 0;
     right: 0;
     gap: 0.8rem;
     padding: 4rem 7rem 0;
-    justify-content: space-between;
 }
 
-header * {
+#clickUpLogo,
+#title,
+#dateElement {
     grid-row: 1;
     font-size: 2rem;
 }
 
-#tvBox {
+#box {
     display: none;
     padding: 0.6rem 1.8rem;
     gap: 2.8rem;
-    row-gap: 0.4rem;
 }
 
-.no-data {
+#noData {
     display: none;
-    font-family: Gilroy-SemiBold;
     font-size: 8rem;
+    font-weight: 600;
     font-style: italic;
 }
 
-.show {
-    display: flex !important;
-}
-
-.user-image {
+#profilePicture {
+    border: 0.5rem solid;
     border-radius: 100%;
     width: 11rem;
-    border: 0.5rem solid;
 }
 
-.user-name {
+#username {
     font-size: 4.5rem;
-    font-family: Gilroy-SemiBold;
+    font-weight: 600;
 }
 
 #dateElement {
@@ -111,22 +110,6 @@ header * {
     margin-bottom: 4px;
 }
 
-/* 
-.test-line {
-    position: absolute;
-    top: 97px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: .1rem;
-    border: 0;
-    background: red;
-    z-index: 100;
-} */
-
-
-iframe {
-    width: 100%;
-    height: 100%;
-    aspect-ratio: 16/9;
+.show {
+    display: flex !important;
 }
