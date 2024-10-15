@@ -71,7 +71,7 @@ header {
 
 #tvBox {
     padding: 0.6rem 1.8rem;
-    column-gap: 1.5rem;
+    gap: 2.8rem;
     row-gap: 0.4rem;
 }
 
