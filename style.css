@@ -73,9 +73,21 @@ header * {
 }
 
 #tvBox {
+    display: none;
     padding: 0.6rem 1.8rem;
     gap: 2.8rem;
     row-gap: 0.4rem;
+}
+
+.no-data {
+    display: none;
+    font-family: Gilroy-SemiBold;
+    font-size: 8rem;
+    font-style: italic;
+}
+
+.show {
+    display: flex !important;
 }
 
 .user-image {
