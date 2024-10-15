@@ -22,7 +22,8 @@
 
     font-family: Gilroy-Regular;
     font-size: 1vw;
-    font-weight: 800;
+    font-weight: normal;
+    white-space: nowrap;
 
     color: var(--text);
     border-color: var(--text);
@@ -51,22 +52,22 @@ main {
 }
 
 header {
+    display: grid;
+    grid-template-columns: 1fr 1fr 10fr;
+    justify-items: end;
     width: 100%;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    gap: 0.3rem;
+    gap: 0.8rem;
     padding: 4rem 7rem;
     justify-content: space-between;
 }
 
-.title {
-    font-size: 2.6rem;
-}
-
-#dateElement {
-    font-size: 1.8rem;
+header * {
+    grid-row: 1;
+    font-size: 2rem;
 }
 
 #tvBox {
@@ -86,10 +87,32 @@ header {
     font-family: Gilroy-SemiBold;
 }
 
-.logo-box {
-    gap: 1rem;
+#dateElement {
+    font-size: 1.4rem;
+    margin-top: 7px;
 }
 
 #clickUpLogo {
     width: 12rem;
+    margin-bottom: 4px;
+}
+
+/* 
+.test-line {
+    position: absolute;
+    top: 97px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: .1rem;
+    border: 0;
+    background: red;
+    z-index: 100;
+} */
+
+
+iframe {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16/9;
 }

@@ -1,3 +1,34 @@
 const dateElement = document.getElementById('dateElement')
 const now = new Date()
-dateElement.textContent = `${now.getDate()}.${now.getMonth() + 1}.${now.getFullYear()}`
+
+const weekdays = [
+    'Montag',
+    'Dienstag',
+    'Mittwoch',
+    'Donnerstag',
+    'Freitag',
+    'Samstag',
+    'Sonntag'
+]
+
+const months = [
+    'Januar',
+    'Februar',
+    'März',
+    'April',
+    'Mai',
+    'Huni',
+    'Juli',
+    'August',
+    'September',
+    'Oktober',
+    'November',
+    'Dezember'
+]
+
+dateElement.textContent = `
+    ${weekdays[now.getDay()]},
+    ${now.getDate()}.
+    ${months[now.getMonth()]}
+    ${now.getFullYear()}
+`
