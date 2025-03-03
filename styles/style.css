@@ -97,8 +97,8 @@ header {
     opacity: 1 !important;
 }
 
-#circle-fill {
-    width: 15rem;
+#portrait {
+    width: 16rem;
     font-size: 4rem;
     font-weight: 600;
     border-radius: 100%;

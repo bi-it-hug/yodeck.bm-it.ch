@@ -1,23 +1,26 @@
 const assigneeBox = document.getElementById('assignee-box')
 const noData = document.getElementById('no-data')
 const username = document.getElementById('username')
+const portrait = document.getElementById('portrait')
 const loading = document.getElementById('loading')
 const taskURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 const apiKey = new URLSearchParams(window.location.search).get('key')
 const cutAbbreviation = true
-const fetchOptions = {
-    method: 'GET',
-    headers: {
-        'Content-Type': 'application/json',
-        Authorization: apiKey
-    }
-}
 
 window.data = {
     get: async function (URL) {
         try {
-            const response = await fetch(URL, fetchOptions)
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+            const response = await fetch(URL, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: apiKey
+                }
+            })
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`)
+            }
             return await response.json()
 
         } catch (error) {
@@ -31,26 +34,20 @@ window.data = {
                 const data = await this.get(URL)
                 const assignee = data.tasks[0].assignees[0]
 
-                let circleFill
-
                 if (assignee.profilePicture === null) {
-                    circleFill = document.createElement('h1')
-                    circleFill.textContent = assignee.initials
+                    portrait.src = '../assets/images/not-found.svg'
 
                 } else {
-                    circleFill = document.createElement('img')
-                    circleFill.src = assignee.profilePicture
+                    portrait.src = assignee.profilePicture
                 }
 
                 if (cutAbbreviation) {
-                    username.textContent = assignee.username.replace(/\s*\(.*?\)/, '')
+                    username.textContent = assignee.username.replace(/\s*\(.*?\)/, '') + 'mann'
 
                 } else {
-                    username.textContent = assignee.username
+                    username.textContent = assignee.username + 'mann'
                 }
 
-                circleFill.id = 'circle-fill'
-                assigneeBox.append(circleFill)
                 assigneeBox.classList.add('show')
 
             } catch (error) {
