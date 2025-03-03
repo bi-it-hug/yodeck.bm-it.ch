@@ -1,19 +1,19 @@
 const box = document.getElementById('box')
-const noData = document.getElementById('noData')
-const profilePictureElement = document.getElementById('profilePicture')
+const noData = document.getElementById('no-data')
+const profilePictureElement = document.getElementById('circleFill')
 const usernameElement = document.getElementById('username')
-
+const taskURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 const apiKey = new URLSearchParams(window.location.search).get('key')
-const tvURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 
 const fetchOptions = {
     method: 'GET',
-    redirect: 'follow',
     headers: {
         'Content-Type': 'application/json',
         Authorization: apiKey
     }
 }
+
+let circleFill
 
 async function getData(url) {
     try {
@@ -34,7 +34,18 @@ async function loadData(url) {
             if (data && data.tasks.length > 0 && data.tasks[0].assignees.length > 0) {
                 const assignee = data.tasks[0].assignees[0]
 
-                profilePictureElement.src = assignee.profilePicture || 'default-profile.png'
+                if (assignee.profilePicture === null) {
+                    circleFill = document.createElement('h1')
+                    circleFill.textContent = assignee.initials
+
+                } else {
+                    circleFill = document.createElement('img')
+                    circleFill.src = assignee.profilePicture
+                }
+
+                circleFill.id = 'circleFill'
+                box.append(circleFill)
+
                 usernameElement.textContent = assignee.username || 'Unknown User'
                 box.classList.add('show')
 
@@ -49,4 +60,4 @@ async function loadData(url) {
     }
 }
 
-window.onload = () => loadData(tvURL)
+window.onload = () => loadData(taskURL)

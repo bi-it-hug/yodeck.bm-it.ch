@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="de">
     <head>
+        <!-- Page Title -->
+        <title>ClickUp-TV</title>
+
+        <!-- Meta Stuff -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="style.css" />
+
+        <!-- Links -->
+        <link rel="stylesheet" href="./styles/imports.css" />
+        <link rel="stylesheet" href="./styles/style.css" />
         <link rel="icon" href="assets/desktop-app-white-rounded.svg" />
-        <title>Tagesverantwortung</title>
-        <script defer src="scripts/getUser.js"></script>
-        <script defer src="scripts/getDate.js"></script>
+
+        <!-- Scripts -->
+        <script src="./scripts/getUser.js" defer></script>
+        <script src="./scripts/getDate.js" defer></script>
     </head>
     <body>
         <header>
-            <img id="clickUpLogo" src="assets/clickup-logo-white-text.svg" />
-            <h1 id="title">Tagesverantwortung</h1>
-            <p id="dateElement"></p>
+            <div class="logo-wrapper">
+                <img id="click-up-logo" src="./assets/images/clickup-logo-white-text.svg" />
+                <h1 id="title">Tagesverantwortung</h1>
+            </div>
+            <p id="date-element"></p>
         </header>
         <main>
             <div id="box">
                 <p id="username"></p>
-                <img id="profilePicture" />
             </div>
-            <p id="noData">No data found...</p>
+            <p id="no-data">No data found...</p>
         </main>
     </body>
 </html>

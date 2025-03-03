@@ -1,0 +1,101 @@
+:root {
+    --transition-flow: cubic-bezier(0.19, 1, 0.22, 1);
+    --background: #111111;
+}
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+
+    transition-timing-function: var(--exponential);
+    transition-property: all;
+    transition-duration: 0.2s;
+
+    color: white;
+    font-family: "Gilroy";
+    font-size: 1rem;
+
+    scroll-behavior: smooth;
+    margin: 0;
+}
+
+*:not(head, script) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background: var(--background);
+    font-size: 12px;
+    width: 100vw;
+    height: 100vh;
+}
+
+main {
+    width: inherit;
+    height: inherit;
+}
+
+header {
+    flex-direction: row;
+    justify-content: space-between;
+    width: inherit;
+    height: fit-content;
+    position: sticky;
+    padding: 4rem 7rem 0;
+}
+
+.logo-wrapper {
+    flex-direction: row;
+    gap: 0.8rem;
+}
+
+#title {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+#box {
+    display: none;
+    flex-direction: row;
+    padding: 0.6rem 1.8rem;
+    gap: 2.8rem;
+}
+
+#no-data {
+    display: none;
+    font-size: 8rem;
+    font-weight: 600;
+    font-style: italic;
+}
+
+#circleFill {
+    font-size: 4rem;
+    font-weight: 600;
+    border: 0.5rem solid white;
+    border-radius: 100%;
+    width: 15rem;
+    aspect-ratio: 1;
+}
+
+#username {
+    font-size: 7rem;
+    font-weight: 800;
+}
+
+#date-element {
+    font-size: 1.4rem;
+    margin-top: 7px;
+}
+
+#click-up-logo {
+    width: 12rem;
+    margin-bottom: 4px;
+}
+
+.show {
+    display: flex !important;
+}

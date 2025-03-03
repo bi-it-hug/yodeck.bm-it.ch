@@ -1,4 +1,4 @@
-const dateElement = document.getElementById('dateElement')
+const dateElement = document.getElementById('date-element')
 const now = new Date()
 
 const weekdays = [
