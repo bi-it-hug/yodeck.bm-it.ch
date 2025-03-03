@@ -13,9 +13,14 @@
         <link rel="stylesheet" href="./styles/style.css" />
         <link rel="icon" href="assets/desktop-app-white-rounded.svg" />
 
-        <!-- Scripts -->
+        <!-- External Scripts -->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js" defer></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js" defer></script>
+
+        <!-- Internal Scripts -->
         <script src="./scripts/getUser.js" defer></script>
         <script src="./scripts/getDate.js" defer></script>
+        <script src="./scripts/animations.js" defer></script>
     </head>
     <body>
         <header>
@@ -26,10 +31,19 @@
             <p id="date-element"></p>
         </header>
         <main>
-            <div id="box">
+            <div id="loading" class="show">
+                <ion-icon class="dot" name="ellipse"></ion-icon>
+                <ion-icon class="dot" name="ellipse"></ion-icon>
+                <ion-icon class="dot" name="ellipse"></ion-icon>
+
+                <!-- <p class="dot">.</p>
+                <p class="dot">.</p>
+                <p class="dot">.</p> -->
+            </div>
+            <div id="assignee-box">
                 <p id="username"></p>
             </div>
-            <p id="no-data">No data found...</p>
+            <p id="no-data">No data found</p>
         </main>
     </body>
 </html>

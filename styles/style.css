@@ -1,6 +1,7 @@
 :root {
     --transition-flow: cubic-bezier(0.19, 1, 0.22, 1);
-    --background: #111111;
+    --background-color: hsl(0, 0%, 7%);
+    --text-color: white;
 }
 
 *,
@@ -10,11 +11,14 @@
 
     transition-timing-function: var(--exponential);
     transition-property: all;
-    transition-duration: 0.2s;
+    transition-duration: 0.4s;
 
-    color: white;
+    /* min-width: min-content; */
+
+    color: var(--text-color);
     font-family: "Gilroy";
     font-size: 1rem;
+    line-height: 1;
 
     scroll-behavior: smooth;
     margin: 0;
@@ -28,10 +32,11 @@
 }
 
 body {
-    background: var(--background);
+    background: var(--background-color);
     font-size: 12px;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
 }
 
 main {
@@ -55,35 +60,55 @@ header {
 
 #title {
     font-size: 2rem;
-    font-weight: 600;
+    font-weight: 400;
 }
 
-#box {
+#assignee-box {
     display: none;
     flex-direction: row;
-    padding: 0.6rem 1.8rem;
+    position: relative;
     gap: 2.8rem;
 }
 
+#assignee-box::after {
+    position: absolute;
+    content: "";
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, var(--background-color), var(--background-color));
+    animation: fade-in 3s var(--transition-flow) both;
+}
+
+#loading {
+    flex-direction: row;
+}
+
+#loading,
 #no-data {
     display: none;
-    font-size: 8rem;
-    font-weight: 600;
-    font-style: italic;
 }
 
-#circleFill {
+.dot {
+    font-size: 2rem;
+    opacity: 0;
+}
+
+.active {
+    opacity: 1 !important;
+}
+
+#circle-fill {
+    width: 15rem;
     font-size: 4rem;
     font-weight: 600;
-    border: 0.5rem solid white;
     border-radius: 100%;
-    width: 15rem;
-    aspect-ratio: 1;
+    /* border: 0.8rem solid var(--text-color); */
 }
 
-#username {
+#username,
+#no-data {
     font-size: 7rem;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 #date-element {
@@ -93,9 +118,19 @@ header {
 
 #click-up-logo {
     width: 12rem;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .show {
     display: flex !important;
+}
+
+@keyframes fade-in {
+    from {
+        left: -100%;
+    }
+
+    to {
+        left: 100%;
+    }
 }

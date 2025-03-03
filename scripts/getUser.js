@@ -1,10 +1,10 @@
-const box = document.getElementById('box')
+const assigneeBox = document.getElementById('assignee-box')
 const noData = document.getElementById('no-data')
-const profilePictureElement = document.getElementById('circleFill')
-const usernameElement = document.getElementById('username')
+const username = document.getElementById('username')
+const loading = document.getElementById('loading')
 const taskURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 const apiKey = new URLSearchParams(window.location.search).get('key')
-
+const cutAbbreviation = true
 const fetchOptions = {
     method: 'GET',
     headers: {
@@ -13,26 +13,25 @@ const fetchOptions = {
     }
 }
 
-let circleFill
-
-async function getData(url) {
-    try {
-        const resp = await fetch(url, fetchOptions)
-        if (!resp.ok) throw new Error(`HTTP error! status: ${resp.status}`)
-        return await resp.json()
-
-    } catch (error) {
-        console.error('Error fetching data:', error)
-    }
-}
-
-async function loadData(url) {
-    if (apiKey) {
+window.data = {
+    get: async function (URL) {
         try {
-            const data = await getData(url)
+            const response = await fetch(URL, fetchOptions)
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`)
+            return await response.json()
 
-            if (data && data.tasks.length > 0 && data.tasks[0].assignees.length > 0) {
+        } catch (error) {
+            console.error(`Failed to fetch data: ${error}`)
+        }
+    },
+
+    render: async function (URL) {
+        if (apiKey) {
+            try {
+                const data = await this.get(URL)
                 const assignee = data.tasks[0].assignees[0]
+
+                let circleFill
 
                 if (assignee.profilePicture === null) {
                     circleFill = document.createElement('h1')
@@ -43,21 +42,27 @@ async function loadData(url) {
                     circleFill.src = assignee.profilePicture
                 }
 
-                circleFill.id = 'circleFill'
-                box.append(circleFill)
+                if (cutAbbreviation) {
+                    username.textContent = assignee.username.replace(/\s*\(.*?\)/, '')
 
-                usernameElement.textContent = assignee.username || 'Unknown User'
-                box.classList.add('show')
+                } else {
+                    username.textContent = assignee.username
+                }
 
-            } else {
+                circleFill.id = 'circle-fill'
+                assigneeBox.append(circleFill)
+                assigneeBox.classList.add('show')
+
+            } catch (error) {
+                console.error(`Failed to load data: ${error}`)
                 noData.classList.add('show')
             }
-        } catch (error) {
+        } else {
+            console.error('No key was given')
             noData.classList.add('show')
         }
-    } else {
-        noData.classList.add('show')
+        loading.classList.remove('show')
     }
 }
 
-window.onload = () => loadData(taskURL)
+window.onload = () => data.render(taskURL)
