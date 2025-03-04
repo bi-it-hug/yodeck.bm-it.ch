@@ -42,10 +42,10 @@ window.data = {
                 }
 
                 if (cutAbbreviation) {
-                    username.textContent = assignee.username.replace(/\s*\(.*?\)/, '') + 'mann'
+                    username.textContent = assignee.username.replace(/\s*\(.*?\)/, '')
 
                 } else {
-                    username.textContent = assignee.username + 'mann'
+                    username.textContent = assignee.username
                 }
 
                 assigneeBox.classList.add('show')
