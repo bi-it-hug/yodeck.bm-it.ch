@@ -5,7 +5,6 @@ const portrait = document.getElementById('portrait')
 const loadingBox = document.getElementById('loading-box')
 const taskURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 const apiKey = new URLSearchParams(window.location.search).get('key')
-const cutAbbreviation = true
 
 window.data = {
     get: async function (URL) {

@@ -26,9 +26,10 @@ const months = [
     'Dezember'
 ]
 
-date.textContent = `
+if (showDate) {
+    date.textContent = `
     ${weekdays[now.getDay() - 1]},
     ${now.getDate()}.
     ${months[now.getMonth()]}
-    ${now.getFullYear()}
-`
+    ${now.getFullYear()}`
+}
