@@ -1,5 +1,5 @@
 :root {
-    --transition-flow: cubic-bezier(0.19, 1, 0.22, 1);
+    --exponential: cubic-bezier(0.19, 1, 0.22, 1);
     --background-color: hsl(0, 0%, 7%);
     --header-color: hsl(0, 0%, 16%);
     --border-color: hsl(0, 0%, 10%);
@@ -46,32 +46,18 @@ main {
     height: inherit;
 }
 
-header {
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-    height: fit-content;
-    background: var(--border-color);
-    padding: 2rem 6rem;
-    border-bottom: 2px solid var(--header-color);
-}
-
-.logo-box {
-    flex-direction: row;
-    gap: 0.8rem;
-    margin-top: 8px;
-}
-
 #title {
     font-size: 2rem;
     font-weight: 400;
+    opacity: 0.65;
 }
 
 #assignee-box {
     display: none;
+    justify-items: end;
     flex-direction: row;
     position: relative;
-    gap: 2.8rem;
+    column-gap: 2.8rem;
 }
 
 #assignee-box::after {
@@ -80,7 +66,7 @@ header {
     width: 200%;
     height: 100%;
     background: linear-gradient(90deg, transparent, var(--background-color), var(--background-color));
-    animation: fade-in 3s var(--transition-flow) both;
+    animation: fade-in 3s var(--exponential) both;
 }
 
 #loading-box {
@@ -101,21 +87,31 @@ header {
     opacity: 0;
 }
 
-.active {
-    opacity: 1 !important;
-}
-
 #portrait {
-    width: 16rem;
+    width: 18rem;
     font-size: 4rem;
     font-weight: 600;
     border-radius: 100%;
-    /* border: 0.8rem solid var(--text-color); */
+    grid-column: 2;
+    grid-row: 1/6;
+}
+
+#username {
+    grid-column: 1;
+    grid-row: 3/4;
+}
+
+#logo-box {
+    width: fit-content;
+    flex-direction: row;
+    gap: 0.4rem;
+    grid-column: 1;
+    grid-row: 4/5;
 }
 
 #username,
 #error {
-    font-size: 7rem;
+    font-size: 8rem;
     font-weight: 700;
 }
 
@@ -125,12 +121,21 @@ header {
 }
 
 #click-up-logo {
-    width: 12rem;
-    margin-bottom: 6px;
+    width: 10rem;
+    margin-bottom: 0.2rem;
 }
 
-.show {
+.show-assignee {
+    display: grid !important;
+}
+
+.show-error,
+.show-loading {
     display: flex !important;
+}
+
+.show-ellipses {
+    opacity: 1 !important;
 }
 
 @keyframes fade-in {

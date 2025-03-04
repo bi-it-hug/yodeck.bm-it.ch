@@ -47,19 +47,19 @@ window.data = {
                     username.textContent = assignee.username
                 }
 
-                assigneeBox.classList.add('show')
+                assigneeBox.classList.add('show-assignee')
 
             } catch (error) {
                 console.error(`Error: Failed to load data: ${error}`)
                 error.textContent = `Error: Failed to load data: ${error}`
-                error.classList.add('show')
+                error.classList.add('show-error')
             }
         } else {
             console.error('Error: No key given')
             error.textContent = 'Error: No key given'
-            error.classList.add('show')
+            error.classList.add('show-error')
         }
-        loadingBox.classList.remove('show')
+        // loadingBox.classList.remove('show')
     }
 }
 

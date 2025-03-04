@@ -16,23 +16,12 @@
         <!-- Internal Scripts -->
         <script src="./scripts/rules.js" defer></script>
         <script src="./scripts/assignee.js" defer></script>
-        <script src="./scripts/date.js" defer></script>
         <script src="./scripts/animations.js" defer></script>
     </head>
     <body>
-        <header>
-            <!-- Logo & Title -->
-            <div class="logo-box">
-                <img id="click-up-logo" src="./assets/images/clickup-logo-white-text.svg" />
-                <h1 id="title">Tagesverantwortung</h1>
-            </div>
-
-            <!-- Current Date & Time -->
-            <p id="date"></p>
-        </header>
         <main>
             <!-- Loading View -->
-            <div id="loading-box" class="show">
+            <div id="loading-box" class="show-ellipses">
                 <div class="ellipse"></div>
                 <div class="ellipse"></div>
                 <div class="ellipse"></div>
@@ -41,7 +30,13 @@
             <!-- Data View -->
             <div id="assignee-box">
                 <p id="username"></p>
+
                 <img id="portrait" />
+
+                <div id="logo-box">
+                    <img id="click-up-logo" src="./assets/images/clickup-logo-white-text.svg" />
+                    <h1 id="title">Tagesverantwortung</h1>
+                </div>
             </div>
 
             <!-- Error View -->
