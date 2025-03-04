@@ -1,4 +1,4 @@
-const dateElement = document.getElementById('date-element')
+const date = document.getElementById('date')
 const now = new Date()
 
 const weekdays = [
@@ -26,7 +26,7 @@ const months = [
     'Dezember'
 ]
 
-dateElement.textContent = `
+date.textContent = `
     ${weekdays[now.getDay() - 1]},
     ${now.getDate()}.
     ${months[now.getMonth()]}

@@ -1,8 +1,8 @@
 const assigneeBox = document.getElementById('assignee-box')
-const noData = document.getElementById('no-data')
+const error = document.getElementById('error')
 const username = document.getElementById('username')
 const portrait = document.getElementById('portrait')
-const loading = document.getElementById('loading')
+const loadingBox = document.getElementById('loading-box')
 const taskURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 const apiKey = new URLSearchParams(window.location.search).get('key')
 const cutAbbreviation = true
@@ -24,7 +24,7 @@ window.data = {
             return await response.json()
 
         } catch (error) {
-            console.error(`Failed to fetch data: ${error}`)
+            console.error(`Error: Failed to fetch data: ${error}`)
         }
     },
 
@@ -51,14 +51,16 @@ window.data = {
                 assigneeBox.classList.add('show')
 
             } catch (error) {
-                console.error(`Failed to load data: ${error}`)
-                noData.classList.add('show')
+                console.error(`Error: Failed to load data: ${error}`)
+                error.textContent = `Error: Failed to load data: ${error}`
+                error.classList.add('show')
             }
         } else {
-            console.error('No key was given')
-            noData.classList.add('show')
+            console.error('Error: No key given')
+            error.textContent = 'Error: No key given'
+            error.classList.add('show')
         }
-        loading.classList.remove('show')
+        loadingBox.classList.remove('show')
     }
 }
 

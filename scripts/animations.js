@@ -1,18 +1,18 @@
-const dots = document.querySelectorAll('.dot')
+const ellipses = document.querySelectorAll('.ellipse')
 const delayBetweenFrames = 100
 const delayAfterFullLoop = 750
 
-function animateDots() {
-    if (!loading.classList.contains('show')) clearInterval(loop)
+function animateEllipses() {
+    if (!loadingBox.classList.contains('show')) clearInterval(loop)
 
     // Punkte nacheinander aktivieren
-    dots.forEach((dot, index) => {
+    ellipses.forEach((dot, index) => {
         setTimeout(() => {
             dot.classList.add('active')
 
             // Erst wenn der letzte Punkt aktiv ist, beginnt das Deaktivieren in gleicher Reihenfolge
-            if (index === dots.length - 1) {
-                dots.forEach((dot, removeIndex) => {
+            if (index === ellipses.length - 1) {
+                ellipses.forEach((dot, removeIndex) => {
                     setTimeout(() => {
                         dot.classList.remove('active')
                     }, removeIndex * delayBetweenFrames)
@@ -23,7 +23,7 @@ function animateDots() {
 }
 
 // Starte Animation und wiederhole sie in Intervallen
-const loop = setInterval(animateDots, dots.length * delayBetweenFrames * 2 + delayAfterFullLoop)
+const loop = setInterval(animateEllipses, ellipses.length * delayBetweenFrames * 2 + delayAfterFullLoop)
 
 // Direkt beim Laden starten
-animateDots()
+animateEllipses()

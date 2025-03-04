@@ -53,7 +53,7 @@ header {
     padding: 4rem 7rem 0;
 }
 
-.logo-wrapper {
+.logo-box {
     flex-direction: row;
     gap: 0.8rem;
 }
@@ -79,17 +79,21 @@ header {
     animation: fade-in 3s var(--transition-flow) both;
 }
 
-#loading {
+#loading-box {
     flex-direction: row;
+    gap: 0.2rem;
 }
 
-#loading,
-#no-data {
+#loading-box,
+#error {
     display: none;
 }
 
-.dot {
-    font-size: 2rem;
+.ellipse {
+    width: 2rem;
+    aspect-ratio: 1;
+    background: var(--text-color);
+    border-radius: 100%;
     opacity: 0;
 }
 
@@ -106,12 +110,12 @@ header {
 }
 
 #username,
-#no-data {
+#error {
     font-size: 7rem;
     font-weight: 700;
 }
 
-#date-element {
+#date {
     font-size: 1.4rem;
     margin-top: 7px;
 }
