@@ -6,6 +6,8 @@ const loadingBox = document.getElementById('loading-box')
 const taskURL = 'https://api.clickup.com/api/v2/view/19vq0-51092/task?=#8695efnv4'
 const apiKey = new URLSearchParams(window.location.search).get('key')
 
+// 
+
 window.data = {
     get: async function (URL) {
         try {
@@ -59,7 +61,7 @@ window.data = {
             error.textContent = 'Error: No key given'
             error.classList.add('show-error')
         }
-        // loadingBox.classList.remove('show')
+        loadingBox.classList.remove('show-loading')
     }
 }
 

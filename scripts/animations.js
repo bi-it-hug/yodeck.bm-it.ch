@@ -1,4 +1,5 @@
-const ellipses = document.querySelectorAll('.ellipse')
+const circles = document.querySelectorAll('.circle')
+const showCircleClass = 'show-circle'
 const delayBetweenFrames = 100
 const delayAfterFullLoop = 750
 
@@ -6,15 +7,15 @@ function animateEllipses() {
     if (!loadingBox.classList.contains('show')) clearInterval(loop)
 
     // Punkte nacheinander aktivieren
-    ellipses.forEach((dot, index) => {
+    circles.forEach((circle, index) => {
         setTimeout(() => {
-            dot.classList.add('active')
+            circle.classList.add(showCircleClass)
 
             // Erst wenn der letzte Punkt aktiv ist, beginnt das Deaktivieren in gleicher Reihenfolge
-            if (index === ellipses.length - 1) {
-                ellipses.forEach((dot, removeIndex) => {
+            if (index === circles.length - 1) {
+                circles.forEach((circle, removeIndex) => {
                     setTimeout(() => {
-                        dot.classList.remove('active')
+                        circle.classList.remove(showCircleClass)
                     }, removeIndex * delayBetweenFrames)
                 })
             }
@@ -23,7 +24,7 @@ function animateEllipses() {
 }
 
 // Starte Animation und wiederhole sie in Intervallen
-const loop = setInterval(animateEllipses, ellipses.length * delayBetweenFrames * 2 + delayAfterFullLoop)
+const loop = setInterval(animateEllipses, circles.length * delayBetweenFrames * 2 + delayAfterFullLoop)
 
 // Direkt beim Laden starten
 animateEllipses()

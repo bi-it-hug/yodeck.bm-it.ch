@@ -3,6 +3,7 @@
     --background-color: hsl(0, 0%, 7%);
     --header-color: hsl(0, 0%, 16%);
     --border-color: hsl(0, 0%, 10%);
+    --green: hsl(110, 62%, 57%);
     --text-color: hsl(0, 0%, 100%);
 }
 
@@ -15,7 +16,8 @@
     transition-property: all;
     transition-duration: 0.4s;
 
-    /* min-width: min-content; */
+    /* min-width: max-content; */
+    white-space: nowrap;
 
     color: var(--text-color);
     font-family: "Gilroy";
@@ -70,6 +72,8 @@ main {
 }
 
 #loading-box {
+    position: absolute;
+    inset: 0;
     flex-direction: row;
     gap: 0.2rem;
 }
@@ -79,7 +83,7 @@ main {
     display: none;
 }
 
-.ellipse {
+.circle {
     width: 2rem;
     aspect-ratio: 1;
     background: var(--text-color);
@@ -134,7 +138,7 @@ main {
     display: flex !important;
 }
 
-.show-ellipses {
+.show-circle {
     opacity: 1 !important;
 }
 
