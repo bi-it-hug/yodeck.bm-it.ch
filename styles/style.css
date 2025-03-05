@@ -3,7 +3,6 @@
     --background-color: hsl(0, 0%, 7%);
     --header-color: hsl(0, 0%, 16%);
     --border-color: hsl(0, 0%, 10%);
-    --green: hsl(110, 62%, 57%);
     --text-color: hsl(0, 0%, 100%);
 }
 
@@ -140,6 +139,11 @@ main {
 
 .show-circle {
     opacity: 1 !important;
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
 }
 
 @keyframes fade-in {
