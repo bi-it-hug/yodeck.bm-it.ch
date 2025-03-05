@@ -12,17 +12,14 @@ const Resources = {
 
 const data = {
     get: async function (URL) {
-
-        const options = {
-            method: 'GET',
-            headers: {
-                accept: 'application/json',
-                Authorization: apiKey
-            }
-        }
-
         try {
-            const response = await fetch(URL, options)
+            const response = await fetch(URL, {
+                method: 'GET',
+                headers: {
+                    accept: 'application/json',
+                    Authorization: apiKey
+                }
+            })
             if (!response.ok) console.error(response)
             return await response.json()
 

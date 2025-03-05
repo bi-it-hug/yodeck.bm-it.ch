@@ -18,7 +18,6 @@
     /* min-width: max-content; */
     white-space: nowrap;
 
-    color: var(--text-color);
     font-family: "Gilroy";
     font-size: 1rem;
     line-height: 1;
@@ -35,16 +34,24 @@
 }
 
 body {
-    background: var(--background-color);
     font-size: 12px;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
 
+.dark-mode {
+    background: var(--background-color);
+}
+
 main {
     width: inherit;
     height: inherit;
+}
+
+.dark-mode #title,
+.dark-mode #username {
+    color: var(--text-color);
 }
 
 #title {
@@ -66,8 +73,12 @@ main {
     content: "";
     width: 200%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, var(--background-color), var(--background-color));
+    background: linear-gradient(90deg, transparent, var(--text-color), var(--text-color));
     animation: fade-in 3s var(--exponential) both;
+}
+
+.dark-mode #assignee-box::after {
+    background: linear-gradient(90deg, transparent, var(--background-color), var(--background-color));
 }
 
 #loading-box {
@@ -85,9 +96,13 @@ main {
 .circle {
     width: 2rem;
     aspect-ratio: 1;
-    background: var(--text-color);
     border-radius: 100%;
+    background: var(--background-color);
     opacity: 0;
+}
+
+.dark-mode .circle {
+    background: var(--text-color);
 }
 
 #portrait {
