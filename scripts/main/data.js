@@ -7,7 +7,7 @@ const loadingBox = document.getElementById('loading-box')
 const apiKey = new URLSearchParams(window.location.search).get('key')
 
 const Resources = {
-    assigneeTask: new APIResource('86986rupg', 'task'),
+    assigneeTask: new APIResource('8698796zq', 'task'),
 }
 
 const data = {
@@ -37,6 +37,8 @@ const data = {
                     case Resources.assigneeTask:
 
                         const assignee = data.assignees[0]
+
+                        console.info(assignee)
 
                         if (assignee.profilePicture === null) {
                             portrait.src = '../assets/images/not-found.svg'
