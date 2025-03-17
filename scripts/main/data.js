@@ -6,8 +6,9 @@ const loadingBox = document.getElementById('loading-box')
 
 const apiKey = new URLSearchParams(window.location.search).get('key')
 
-const Resources = {
-    assigneeTask: new APIResource('8698796zq', 'task'),
+const resources = {
+    assigneeTask: new APIResource('8698apucx', 'task'),
+    assigneeTaskList: new APIResource('901202079960', 'task-list')
 }
 
 const data = {
@@ -29,16 +30,18 @@ const data = {
     },
 
     render: async function (RESOURCE) {
+
+        console.info('Loading data...')
+
         if (apiKey) {
             try {
                 const data = await this.get(RESOURCE.URL)
+                let assignee
 
                 switch (RESOURCE) {
-                    case Resources.assigneeTask:
+                    case resources.assigneeTaskList:
 
-                        const assignee = data.assignees[0]
-
-                        console.info(assignee)
+                        assignee = data.tasks[0].assignees[0]
 
                         if (assignee.profilePicture === null) {
                             portrait.src = '../assets/images/not-found.svg'
@@ -56,9 +59,6 @@ const data = {
 
                         assigneeBox.classList.add('show-assignee')
                         break
-
-                    default:
-                        console.error('ERROR')
                 }
 
             } catch (error) {
@@ -73,6 +73,4 @@ const data = {
     }
 }
 
-window.onload = () => data.render(Resources.assigneeTask)
-
-
+window.onload = () => data.render(resources.assigneeTaskList)
