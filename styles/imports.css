@@ -1,59 +1,9 @@
 @font-face {
-    src: url(../assets/fonts/Gilroy-Thin.ttf);
-    font-family: "Gilroy";
-    font-weight: 100;
+    src: url(../assets/fonts/Geist.ttf);
+    font-family: "Geist";
 }
 
 @font-face {
-    src: url(../assets/fonts/Gilroy-UltraLight.ttf);
-    font-family: "Gilroy";
-    font-weight: 200;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-Light.ttf);
-    font-family: "Gilroy";
-    font-weight: 300;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-Regular.ttf);
-    font-family: "Gilroy";
-    font-weight: 400;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-Medium.ttf);
-    font-family: "Gilroy";
-    font-weight: 500;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-SemiBold.ttf);
-    font-family: "Gilroy";
-    font-weight: 600;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-Bold.ttf);
-    font-family: "Gilroy";
-    font-weight: 700;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-ExtraBold.ttf);
-    font-family: "Gilroy";
-    font-weight: 800;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-Black.ttf);
-    font-family: "Gilroy";
-    font-weight: 900;
-}
-
-@font-face {
-    src: url(../assets/fonts/Gilroy-Heavy.ttf);
-    font-family: "Gilroy";
-    font-weight: 1000;
+    src: url(../assets/fonts/PlusJakartaSans.ttf);
+    font-family: "Plus Jakarta Sans";
 }
