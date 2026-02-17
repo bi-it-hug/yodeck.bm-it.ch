@@ -1,0 +1,19 @@
+@import 'tailwindcss';
+
+@font-face {
+    font-family: 'Plus Jakarta Sans';
+    src: url('./assets/fonts/PlusJakartaSans.ttf');
+}
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans';
+    --ease-out: cubic-bezier(0.1, 0.7, 0.5, 1);
+    --test: #404040;
+}
+
+@layer base {
+    * {
+        font-family: var(--font-sans);
+        min-width: max-content;
+    }
+}

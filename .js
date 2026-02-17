@@ -1,0 +1,11 @@
+const ua = document.createElement("h1");
+ua.style.position = "absolute";
+ua.style.inset = 0;
+ua.style.fontSize = "2.4vw";
+ua.style.margin = "auto";
+ua.style.width = "fit-content";
+ua.style.height = "fit-content";
+ua.style.color = "red";
+ua.style.backgroundColor = "white";
+ua.textContent = navigator.userAgent;
+document.body.appendChild(ua);
