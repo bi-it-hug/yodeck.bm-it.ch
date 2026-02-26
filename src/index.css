@@ -5,15 +5,44 @@
     src: url('./assets/fonts/PlusJakartaSans.ttf');
 }
 
+@font-face {
+    font-family: 'Geist';
+    src: url('./assets/fonts/Geist-VariableFont_wght.ttf');
+}
+
 @theme {
     --font-sans: 'Plus Jakarta Sans';
+    --font-serif: 'Geist';
     --ease-out: cubic-bezier(0.1, 0.7, 0.5, 1);
-    --test: #404040;
+    --radius: 0.625rem;
+    --radius-2xl: calc(0.625rem + 8px);
+    --radius-3xl: calc(0.625rem + 12px);
+    --radius-4xl: calc(0.625rem + 16px);
+    --radius-lg: 0.625rem;
+    --radius-md: calc(0.625rem - 2px);
+    --radius-sm: calc(0.625rem - 4px);
+    --radius-xl: calc(0.625rem + 4px);
+    --radius-xs: 0.125rem;
 }
 
 @layer base {
-    * {
+    *,
+    ::before,
+    ::after {
+        transition: all 150ms ease-out;
         font-family: var(--font-sans);
         min-width: max-content;
+    }
+
+    ::selection {
+        background-color: var(--color-neutral-950);
+        color: var(--color-white);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        ::selection {
+            background-color: var(--color-neutral-200);
+            color: var(--color-neutral-900);
+        }
     }
 }

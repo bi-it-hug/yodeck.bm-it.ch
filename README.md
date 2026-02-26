@@ -10,6 +10,7 @@ A lightweight React app that displays the daily responsibility ("Tagesverantwort
 - Dark mode support
 - Loading skeleton animations
 - Error handling with user-friendly messages
+- Dedicated auth page for entering API keys
 
 ## Tech Stack
 
@@ -20,6 +21,7 @@ A lightweight React app that displays the daily responsibility ("Tagesverantwort
 | Build Tool     | Vite 7                              |
 | Styling        | Tailwind CSS 4                      |
 | Icons          | Lucide React                        |
+| Routing        | React Router DOM 7                  |
 | Linting        | ESLint 9 + TypeScript ESLint        |
 | Formatting     | Prettier + Tailwind CSS plugin      |
 
@@ -42,7 +44,11 @@ npm install
 npm run dev
 ```
 
-Open the app in your browser at the URL provided by Vite (typically `http://localhost:5173`), and **append your ClickUp API key as a query parameter**:
+Open the app in your browser at the URL provided by Vite (typically `http://localhost:5173`).
+
+If no API key is present in the URL, the app redirects to `/auth`, where you can enter your key. On submit, the app redirects to `/?key=YOUR_CLICKUP_API_KEY`.
+
+You can still open the main page directly with a key in the query parameter:
 
 ```
 http://localhost:5173/?key=YOUR_CLICKUP_API_KEY
@@ -72,7 +78,7 @@ https://your-domain.com/?key=YOUR_CLICKUP_API_KEY
 | --------- | -------- | ---------------------------------- |
 | `key`     | Yes      | Your personal ClickUp API token    |
 
-On load, the app fetches the first task from the configured ClickUp list and displays the assignee's name and avatar. If no API key is provided or the key is invalid, an error message is shown.
+On load, the app fetches the first task from the configured ClickUp list and displays the assignee's name and avatar. If no API key is provided, the app redirects to `/auth`. If the key is invalid, an error message is shown.
 
 ## Configuration
 
@@ -103,9 +109,10 @@ yodeck/
 ├── public/
 │   └── clickup-logo.svg       # ClickUp logo asset
 ├── src/
-│   ├── App.tsx                 # Main application component
+│   ├── App.tsx                 # Main display page component
+│   ├── AuthPage.tsx            # API key form page
 │   ├── APIResource.ts          # ClickUp API URL builder
-│   ├── main.tsx                # React entry point
+│   ├── main.tsx                # React entry point & route setup
 │   └── index.css               # Global styles & Tailwind imports
 ├── index.html                  # HTML entry point
 ├── vite.config.ts              # Vite configuration
