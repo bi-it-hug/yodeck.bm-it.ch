@@ -1,9 +1,15 @@
 import { useEffect, useMemo, useState } from 'react'
 import APIResource from './APIResource'
 import { CircleAlert } from 'lucide-react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
+
+type FetchResult = {
+    status: number
+    data: unknown | null
+}
 
 export default function App() {
+    const location = useLocation()
     const avatarSizeClasses =
         'size-15 sm:size-30 md:size-50 lg:size-60 xl:size-70 2xl:size-80'
     const nameTextClasses =
@@ -15,8 +21,11 @@ export default function App() {
         'text-sm font-medium sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl'
 
     const apiKey = useMemo(
-        () => new URLSearchParams(window.location.search).get('key'),
-        [],
+        () => {
+            const key = new URLSearchParams(location.search).get('key')?.trim()
+            return key ? key.replaceAll(' ', '+') : null
+        },
+        [location.search],
     )
 
     const resources = useMemo(
@@ -33,7 +42,7 @@ export default function App() {
     const [invalidKey, setInvalidKey] = useState<boolean>(false)
 
     useEffect(() => {
-        async function get(URL: string) {
+        async function get(URL: string): Promise<FetchResult | null> {
             try {
                 const headers: HeadersInit = {
                     accept: 'application/json',
@@ -48,9 +57,9 @@ export default function App() {
 
                 if (!response.ok) {
                     console.error(response)
-                    return null
+                    return { status: response.status, data: null }
                 }
-                return await response.json()
+                return { status: response.status, data: await response.json() }
             } catch (error) {
                 console.error(`Error: Failed to fetch data: ${error}`)
                 return null
@@ -68,19 +77,46 @@ export default function App() {
             setInvalidKey(false)
 
             try {
-                const data = await get(resource.URL)
-                if (!data?.tasks?.[0]?.assignees?.[0]) {
+                const result = await get(resource.URL)
+
+                if (!result) {
+                    setError('Failed to load data')
+                    setLoading(false)
+                    return
+                }
+
+                if (result.status === 401 || result.status === 403) {
                     setInvalidKey(true)
                     setLoading(false)
                     return
                 }
 
-                if (data.tasks[0].assignees.length > 1) {
-                    setError('Cant assign multiple People')
+                const data = result.data as
+                    | {
+                          tasks?: Array<{
+                              assignees?: Array<{
+                                  profilePicture: string | null
+                                  username: string
+                              }>
+                          }>
+                      }
+                    | null
+
+                const assignees = data?.tasks?.[0]?.assignees
+
+                if (!assignees || assignees.length === 0) {
+                    setError('No assignee found for the configured task list')
                     setLoading(false)
+                    return
                 }
 
-                const assignee = data.tasks[0].assignees[0]
+                if (assignees.length > 1) {
+                    setError('Cant assign multiple People')
+                    setLoading(false)
+                    return
+                }
+
+                const assignee = assignees[0]
 
                 if (assignee.profilePicture === null) {
                     setAvatarSrc(null)
@@ -113,7 +149,7 @@ export default function App() {
 
     if (error) {
         return (
-            <div className="flex items-center justify-start gap-3 rounded-[0.625rem] border border-neutral-200 bg-white px-4 py-3 dark:border-white/10 dark:bg-neutral-900">
+            <div className="flex items-center justify-start gap-3 rounded-lg border border-neutral-200 bg-white px-4 py-3 dark:border-white/10 dark:bg-neutral-900">
                 <CircleAlert size={16} className="text-red-400" />
                 <p className="text-sm font-medium text-red-400">{error}</p>
             </div>

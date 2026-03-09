@@ -64,7 +64,7 @@ export default function AuthPage() {
                 className="relative flex flex-col gap-5 rounded-xl border border-neutral-200 bg-white p-6 text-neutral-800 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-200"
             >
                 {formError || hasInvalidKeyError ? (
-                    <div className="absolute top-[100%] right-0 left-0 mx-auto mt-3 flex w-fit max-w-65 items-center gap-2 rounded-lg border border-red-400/25 bg-red-400/10 px-2.5 py-1">
+                    <div className="absolute top-full right-0 left-0 mx-auto mt-3 flex w-fit max-w-65 items-center gap-2 rounded-lg border border-red-400/25 bg-red-400/10 px-2.5 py-1">
                         <CircleAlert size={16} className="text-red-400" />
                         <p className="font-serif text-sm font-normal text-red-400">
                             {formError || 'Invalid API key. Please try again.'}
@@ -76,7 +76,7 @@ export default function AuthPage() {
                     <h2 className="mb-1.5 font-serif font-medium">
                         Authentication
                     </h2>
-                    <p className="text-left text-sm leading-normal font-normal text-[#a1a1a1] last:mt-0 nth-last-2:-mt-1 [&>a]:underline [&>a]:underline-offset-4">
+                    <p className="text-left font-serif text-sm leading-normal font-normal text-[#a1a1a1] last:mt-0 nth-last-2:-mt-1 [&>a]:underline [&>a]:underline-offset-4">
                         Enter a valid ClickUp API Key
                     </p>
                 </div>
