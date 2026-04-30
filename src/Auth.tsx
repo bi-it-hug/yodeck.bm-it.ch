@@ -1,8 +1,8 @@
-import { normalizeApiKey, validateClickUpApiKey } from "@/clickup"
+import { normalizeApiKey, validateClickUpApiKey } from "@/lib/clickup"
 import { useLocation, useNavigate } from "react-router-dom"
 import { type SyntheticEvent, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
+import { Input } from "@/components/ui/input"
 import {
     Field,
     FieldDescription,
@@ -10,19 +10,8 @@ import {
     FieldGroup,
     FieldLabel,
     FieldLegend,
-    FieldSeparator,
     FieldSet,
 } from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
-import {
-    Select,
-    SelectContent,
-    SelectGroup,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@/components/ui/select"
-import { Textarea } from "@/components/ui/textarea"
 
 export function Auth() {
     const navigate = useNavigate()

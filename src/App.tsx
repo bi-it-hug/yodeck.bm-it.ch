@@ -1,14 +1,14 @@
-import { useEffect, useMemo, useState } from "react"
-import { AlertCircleIcon, CircleAlert } from "lucide-react"
 import { Navigate, useLocation } from "react-router-dom"
+import { Alert, AlertTitle } from "@/components/ui/alert"
+import { useEffect, useMemo, useState } from "react"
+import { Skeleton } from "@/components/ui/skeleton"
+import { AlertCircleIcon } from "lucide-react"
+import { cn } from "@/lib/utils"
 import {
     ClickUpApiError,
     fetchFirstOpenTaskAssignees,
     normalizeApiKey,
-} from "@/clickup"
-import { Skeleton } from "@/components/ui/skeleton"
-import { cn } from "@/lib/utils"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+} from "@/lib/clickup"
 
 export function App() {
     const location = useLocation()
