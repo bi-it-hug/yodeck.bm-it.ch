@@ -14,16 +14,16 @@ A lightweight React app that displays the daily responsibility ("Tagesverantwort
 
 ## Tech Stack
 
-| Category       | Technology                          |
-| -------------- | ----------------------------------- |
-| Framework      | React 19                            |
-| Language       | TypeScript 5.9                      |
-| Build Tool     | Vite 7                              |
-| Styling        | Tailwind CSS 4                      |
-| Icons          | Lucide React                        |
-| Routing        | React Router DOM 7                  |
-| Linting        | ESLint 9 + TypeScript ESLint        |
-| Formatting     | Prettier + Tailwind CSS plugin      |
+| Category   | Technology                     |
+| ---------- | ------------------------------ |
+| Framework  | React 19                       |
+| Language   | TypeScript 5.9                 |
+| Build Tool | Vite 7                         |
+| Styling    | Tailwind CSS 4                 |
+| Icons      | Lucide React                   |
+| Routing    | React Router DOM 7             |
+| Linting    | ESLint 9 + TypeScript ESLint   |
+| Formatting | Prettier + Tailwind CSS plugin |
 
 ## Prerequisites
 
@@ -74,9 +74,9 @@ The app reads the ClickUp API key from the URL query string:
 https://your-domain.com/?key=YOUR_CLICKUP_API_KEY
 ```
 
-| Parameter | Required | Description                        |
-| --------- | -------- | ---------------------------------- |
-| `key`     | Yes      | Your personal ClickUp API token    |
+| Parameter | Required | Description                     |
+| --------- | -------- | ------------------------------- |
+| `key`     | Yes      | Your personal ClickUp API token |
 
 On load, the app fetches the first task from the configured ClickUp list and displays the assignee's name and avatar. If no API key is provided, the app redirects to `/auth`. If the key is invalid, an error message is shown.
 
@@ -95,12 +95,12 @@ const resources = useMemo(
 
 ## Available Scripts
 
-| Script            | Description                              |
-| ----------------- | ---------------------------------------- |
-| `npm run dev`     | Start the Vite development server        |
-| `npm run build`   | Type-check and build for production      |
-| `npm run preview` | Preview the production build locally     |
-| `npm run lint`    | Run ESLint across the project            |
+| Script            | Description                          |
+| ----------------- | ------------------------------------ |
+| `npm run dev`     | Start the Vite development server    |
+| `npm run build`   | Type-check and build for production  |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint`    | Run ESLint across the project        |
 
 ## Project Structure
 
